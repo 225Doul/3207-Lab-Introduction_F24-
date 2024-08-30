@@ -1,5 +1,5 @@
 //Abdoul Djedje lab1 08-29-2024
-#include "random.h"
+#include "random.h" // header file that links random.c and print_random.c together 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
