@@ -6,36 +6,21 @@
 #include <stdlib.h> // For malloc(), free(), and srand()
 #include <time.h>   // For time()
 
-char* rand_string_alloc(size_t size) {
-     char *s = malloc(size + 1); // Allocate memory for the string (size + 1 for null terminator)
-     if (s) {
-         rand_string(s, size); // Generate the random string
-     }
-     return s; // Return the pointer to the allocated string
-}
 
-void rand_string(char *s, size_t givenSize) { // Generates a random string of given size
-    for (size_t i = 0; i < givenSize; i++) {
-        s[i] = randchar(); // Assign a generated character to each position of the given length of the string 
-    }
-    s[givenSize] = '\0'; // Null-terminate the string to avoid the index out of bounds error
-}
+// Main function to generate a random 7-letter string using randchar() 
+int main()
+{
+	int a;
 
-// Main function to generate a random 7-letter string using randchar() and the function given 
-int main() {
-    srand(time(NULL)); // Seed the random number generator with the current time
+	/* seed the randomizer */
+	srand( (unsigned)time(NULL) );
 
-    size_t size = 7; // Define the size of the random string
-    char *random_str = rand_string_alloc(size); // Allocate and generate the random string
+	printf("Today's random word: ");
+	for(a=0;a<7;a++)
+		putchar( randchar() );
+	putchar('\n');
 
-    if (random_str) {
-        printf("Random string: %s\n", random_str); // Print the random string
-        free(random_str); // Free the allocated memory
-    } else {
-        printf("Memory allocation failed.\n"); // Handle memory allocation failure
-    }
-
-    return 0;
+	return(0);
 }
 
 /* The following commands need to be typed into the terminal to link the files together 
